@@ -7,7 +7,8 @@ class Form1 extends React.Component {
 		super(props);
 		this.state = {
 			username: '',
-			password: '',
+			password1: '',
+			password2: '',
 			email: '',
 			redirect: false
 		}
@@ -28,12 +29,26 @@ class Form1 extends React.Component {
 	}
 
 	saveData() {
-		if (this.state.username.length > 0 && this.state.password.length > 0 && this.state.email.length > 0) {
+		if (this.state.username.length <= 8) {
+			alert('Please choose a username longer than 8 characters.');
+
+		} else if (this.state.password1 !== this.state.password2) {
+			alert('Passwords do not match. Try again.');
+
+		} else if (this.state.password1.length <= 8) {
+			alert('Please choose a password longer than 8 characters.');
+
+		} else if (this.state.email.indexOf('@') < 0) {
+			alert('Please enter a valid email address.');
+
+		} else {
+
 			let data = {
 				username: this.state.username,
-				password: this.state.password,
+				password: this.state.password1,
 				email: this.state.email
 			};
+
       axios.post('http://localhost:3000/form1', data)
         .then((res) => {
         	console.log('form1 data submitted', res);
@@ -45,8 +60,6 @@ class Form1 extends React.Component {
         .catch((err) => {
         	console.log('error submitting form1 data ', err);
         });
-		} else {
-			alert('Please fill out all form fields to proceed')
 		}
 	}
 
@@ -77,7 +90,11 @@ class Form1 extends React.Component {
 				  </label>
 				  <label>
 				    password:
-				    <input type="text" name="password" value={this.state.password} onChange={this.handleChange}/>
+				    <input type="password" name="password1" value={this.state.password1} onChange={this.handleChange}/>
+				  </label>
+				  <label>
+				    type password again:
+				    <input type="password" name="password2" value={this.state.password2} onChange={this.handleChange}/>
 				  </label>
 				  <label>
 				    email:

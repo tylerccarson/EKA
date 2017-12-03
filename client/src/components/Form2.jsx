@@ -28,7 +28,13 @@ class Form2 extends React.Component {
 	}
 
 	saveData() {
-		if (this.state.first.length > 0 && this.state.last.length > 0 && this.state.telephone.length > 0) {
+		if (this.state.first.length === 0 || this.state.last.length === 0) {
+			alert('Please enter your full name');
+
+		} else if (this.state.telephone.length !== 10 || parseInt(this.state.telephone) === NaN) {
+			alert('Please enter a valid 10-digit telephone number, no dashes.');
+
+		} else {
 			let data = {
 				id: this.props.id,
 				first: this.state.first,
@@ -45,8 +51,6 @@ class Form2 extends React.Component {
         .catch((err) => {
         	console.log('error submitting form2 data ', err);
         });
-		} else {
-			alert('Please fill out all form fields to proceed')
 		}
 	}
 

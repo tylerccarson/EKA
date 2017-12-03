@@ -29,7 +29,7 @@ class Form3 extends React.Component {
 	}
 
 	saveData() {
-		if (this.state.street.length > 0 && this.state.city.length > 0 && this.state.state.length > 0 && this.state.zip.length > 0) {
+		if (this.state.street.length > 0 && this.state.city.length > 0 && this.state.state.length > 0 && this.state.zip.length === 5) {
 			let data = {
 				id: this.props.id,
 				street: this.state.street,
@@ -49,7 +49,7 @@ class Form3 extends React.Component {
         	console.log('error submitting form3 data ', err);
         });
 		} else {
-			alert('Please fill out all form fields to proceed')
+			alert('Please enter a valid address');
 		}
 	}
 
