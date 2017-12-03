@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
+const User = require('../database/index.js');
 
 app.use(express.static(__dirname + '/../client/dist'));
 app.use(bodyParser.json());
@@ -11,8 +12,19 @@ app.get('/*', (req, res) => {
 });
 
 app.post('/form1', (req, res) => {
-	console.log(req.body);
-	res.send('POST request received');
+
+	User.forge({
+		username: req.body.username,
+		password: req.body.password,
+		email: req.body.email
+	}).save()
+	  .then(user => {
+			res.send(user);
+	  })
+	  .catch(err => {
+	  	console.log(err);
+	  	res.status(503).send(err);
+	  })
 });
 
 app.post('/form2', (req, res) => {

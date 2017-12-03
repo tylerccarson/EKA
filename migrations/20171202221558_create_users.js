@@ -2,7 +2,7 @@
 exports.up = function(knex, Promise) {
   return knex.schema.createTableIfNotExists('users', function(table) {
     table.increments('id').unsigned().primary();
-    table.dateTime('createdAt').notNull();
+    table.dateTime('createdAt').nullable();
     table.dateTime('updatedAt').nullable();
     table.dateTime('deletedAt').nullable();
 
