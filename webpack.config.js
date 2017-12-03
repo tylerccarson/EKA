@@ -10,14 +10,14 @@ module.exports = {
     filename: 'bundle.js'
   },
   module: {
-  loaders: [
-    {
-      test: /\.jsx?/,
-      loader: 'babel-loader',
-      query: {
-        presets: ['es2015', 'react']
+    loaders: [
+      {
+        test: /\.jsx?/,
+        loader: 'babel-loader',
+        query: {
+          presets: ['es2015', 'react']
+        }
       }
-    }
   ],
   },
   devtool: 'source-map'
