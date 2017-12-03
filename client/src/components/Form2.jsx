@@ -41,7 +41,7 @@ class Form2 extends React.Component {
 
 		} else {
 			let data = {
-				id: this.props.id,
+				id: this.props.userId,
 				first: this.state.first,
 				last: this.state.last,
 				telephone: this.state.telephone
@@ -98,8 +98,8 @@ class Form2 extends React.Component {
 	}
 }
 
-const mapStateToProps = (state, ownProps) => {
-	return state.userId;
+const mapStateToProps = (state) => {
+	return { userId: state.userId	};
 };
 
 export default connect(mapStateToProps)(Form2);

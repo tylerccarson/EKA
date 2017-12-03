@@ -36,7 +36,7 @@ class Form3 extends React.Component {
 	saveData() {
 		if (this.state.street.length > 0 && this.state.city.length > 0 && this.state.state.length > 0 && this.state.zip.length === 5) {
 			let data = {
-				id: this.props.id,
+				id: this.props.userId,
 				street: this.state.street,
 				city: this.state.city,
 				state: this.state.state,
@@ -101,8 +101,8 @@ class Form3 extends React.Component {
 	}
 }
 
-const mapStateToProps = (state, ownProps) => {
-	return state.userId;
+const mapStateToProps = (state) => {
+	return { userId: state.userId	};
 };
 
 export default connect(mapStateToProps)(Form3);

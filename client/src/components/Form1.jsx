@@ -116,8 +116,10 @@ class Form1 extends React.Component {
 	}
 }
 
-const mapStateToProps = (state, ownProps) => {
-	return state.userId;
+const mapStateToProps = (state) => {
+	return { userId: state.userId	};
 };
+
+const mapDispatchToProps = { setUserId };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Form1);
