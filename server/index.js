@@ -28,7 +28,6 @@ app.post('/form1', (req, res) => {
 });
 
 app.post('/form2', (req, res) => {
-	console.log(req.body);
 
   User.forge({
   	id: req.body.id,
@@ -46,7 +45,7 @@ app.post('/form2', (req, res) => {
 });
 
 app.post('/form3', (req, res) => {
-	console.log(req.body);
+
 	User.forge({
   	id: req.body.id,
 		street: req.body.street,

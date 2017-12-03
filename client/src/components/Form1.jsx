@@ -49,7 +49,7 @@ class Form1 extends React.Component {
 				email: this.state.email
 			};
 
-      axios.post('http://localhost:3000/form1', data)
+      axios.post('/form1', data)
         .then((res) => {
         	console.log('form1 data submitted', res);
         	this.props.setUserId(res.data.id);

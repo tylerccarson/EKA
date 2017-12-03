@@ -41,7 +41,7 @@ class Form2 extends React.Component {
 				last: this.state.last,
 				telephone: this.state.telephone
 			};
-      axios.post('http://localhost:3000/form2', data)
+      axios.post('/form2', data)
         .then((res) => {
         	console.log('form2 data submitted', res);
         	this.setState({

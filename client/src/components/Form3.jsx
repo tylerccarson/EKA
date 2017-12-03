@@ -37,7 +37,7 @@ class Form3 extends React.Component {
 				state: this.state.state,
 				zip: this.state.zip
 			};
-      axios.post('http://localhost:3000/form3', data)
+      axios.post('/form3', data)
         .then((res) => {
         	console.log('form3 data submitted', res);
         	this.props.resetUserId();

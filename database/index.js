@@ -1,13 +1,6 @@
-const knex = require('knex')({
-  client: 'pg',
-  connection: {
-    host: 'localhost',
-    port: 5432,
-    user: 'postgres',
-    database: 'eka_assessment'
-  }
-});
-
+const config = require('../knexfile.js');  
+const env = process.env.NODE_ENV || 'development';  
+const knex = require('knex')(config[env]);
 const bookshelf = require('bookshelf')(knex);
 
 const User = bookshelf.Model.extend({
@@ -15,3 +8,5 @@ const User = bookshelf.Model.extend({
 });
 
 module.exports = User;
+
+knex.migrate.latest([config]); 
