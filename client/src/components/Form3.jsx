@@ -29,8 +29,9 @@ class Form3 extends React.Component {
 	}
 
 	saveData() {
-		if (this.state.street.length > 0 && this.state.city.length > 0 && this.state.state.length > 0 && this.state.zip > 0) {
+		if (this.state.street.length > 0 && this.state.city.length > 0 && this.state.state.length > 0 && this.state.zip.length > 0) {
 			let data = {
+				id: this.props.id,
 				street: this.state.street,
 				city: this.state.city,
 				state: this.state.state,
@@ -39,6 +40,7 @@ class Form3 extends React.Component {
       axios.post('http://localhost:3000/form3', data)
         .then((res) => {
         	console.log('form3 data submitted', res);
+        	this.props.resetUserId();
         	this.setState({
         		redirect: true
         	});

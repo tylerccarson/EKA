@@ -14,13 +14,13 @@ class Main extends React.Component {
 		        <LandingPage/>
 		      )}/>
 		      <Route path="/form1" render={() => (
-		      	<Form1/>
+		      	<Form1 setUserId={this.props.setUserId}/>
 	      	)}/>
 	      	<Route path="/form2" render={() => (
-		      	<Form2/>
+		      	<Form2 id={this.props.id}/>
 	      	)}/>
 	      	<Route path="/form3" render={() => (
-		      	<Form3/>
+		      	<Form3 id={this.props.id} resetUserId={this.props.resetUserId}/>
 	      	)}/>
 	      </Switch>
 			</div>

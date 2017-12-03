@@ -11,11 +11,11 @@ exports.up = function(knex, Promise) {
     table.string('email').notNull();
     table.string('first').nullable();
     table.string('last').nullable();
-    table.integer('telephone').nullable();
+    table.string('telephone').nullable();
     table.string('street').nullable();
     table.string('city').nullable();
     table.string('state').nullable();
-    table.integer('zip').nullable();
+    table.string('zip').nullable();
   });
 };
 

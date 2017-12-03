@@ -30,6 +30,7 @@ class Form2 extends React.Component {
 	saveData() {
 		if (this.state.first.length > 0 && this.state.last.length > 0 && this.state.telephone.length > 0) {
 			let data = {
+				id: this.props.id,
 				first: this.state.first,
 				last: this.state.last,
 				telephone: this.state.telephone

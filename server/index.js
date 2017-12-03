@@ -29,12 +29,38 @@ app.post('/form1', (req, res) => {
 
 app.post('/form2', (req, res) => {
 	console.log(req.body);
-	res.send('POST request received');
+
+  User.forge({
+  	id: req.body.id,
+		first: req.body.first,
+		last: req.body.last,
+		telephone: req.body.telephone
+	}).save()
+	  .then(user => {
+			res.send(user);
+	  })
+	  .catch(err => {
+	  	console.log(err);
+	  	res.status(503).send(err);
+	  })
 });
 
 app.post('/form3', (req, res) => {
 	console.log(req.body);
-	res.send('POST request received');
+	User.forge({
+  	id: req.body.id,
+		street: req.body.street,
+		city: req.body.city,
+		state: req.body.state,
+		zip: req.body.zip
+	}).save()
+	  .then(user => {
+			res.send(user);
+	  })
+	  .catch(err => {
+	  	console.log(err);
+	  	res.status(503).send(err);
+	  })
 });
 
 let port = process.env.PORT || 3000;
