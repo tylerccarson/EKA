@@ -43,7 +43,6 @@ class Form2 extends React.Component {
 			};
       axios.post('/form2', data)
         .then((res) => {
-        	console.log('form2 data submitted', res);
         	this.setState({
         		redirect: true
         	});

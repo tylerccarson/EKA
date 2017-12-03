@@ -39,7 +39,6 @@ class Form3 extends React.Component {
 			};
       axios.post('/form3', data)
         .then((res) => {
-        	console.log('form3 data submitted', res);
         	this.props.resetUserId();
         	this.setState({
         		redirect: true

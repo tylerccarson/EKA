@@ -51,7 +51,6 @@ class Form1 extends React.Component {
 
       axios.post('/form1', data)
         .then((res) => {
-        	console.log('form1 data submitted', res);
         	this.props.setUserId(res.data.id);
         	this.setState({
         		redirect: true
