@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import axios from 'axios';
+import { connect } from 'react-redux';
 
 class Form3 extends React.Component {
 	constructor(props) {
@@ -16,6 +17,10 @@ class Form3 extends React.Component {
 		this.handleSubmit = this.handleSubmit.bind(this);
 		this.saveData = this.saveData.bind(this);
 	}
+
+	props: {
+    userId: Number
+	};
 
 	handleChange(event) {
     this.setState({
@@ -39,7 +44,7 @@ class Form3 extends React.Component {
 			};
       axios.post('/form3', data)
         .then((res) => {
-        	this.props.resetUserId();
+        	//this.props.resetUserId();
         	this.setState({
         		redirect: true
         	});
@@ -96,4 +101,8 @@ class Form3 extends React.Component {
 	}
 }
 
-export default Form3;
+const mapStateToProps = (state, ownProps) => {
+	return state.userId;
+};
+
+export default connect(mapStateToProps)(Form3);

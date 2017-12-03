@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import axios from 'axios';
+import { connect } from 'react-redux';
+import { setUserId } from '../redux/actionCreators.js';
 
 class Form1 extends React.Component {
 	constructor(props) {
@@ -16,6 +18,11 @@ class Form1 extends React.Component {
 		this.handleSubmit = this.handleSubmit.bind(this);
 		this.saveData = this.saveData.bind(this);
 	}
+
+	props: {
+    userId: Number,
+    setUserId: Function
+	};
 
 	handleChange(event) {
     this.setState({
@@ -51,7 +58,10 @@ class Form1 extends React.Component {
 
       axios.post('/form1', data)
         .then((res) => {
+        	//update application state
         	this.props.setUserId(res.data.id);
+
+        	//redirect
         	this.setState({
         		redirect: true
         	});
@@ -106,4 +116,8 @@ class Form1 extends React.Component {
 	}
 }
 
-export default Form1;
+const mapStateToProps = (state, ownProps) => {
+	return state.userId;
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Form1);

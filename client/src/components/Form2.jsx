@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import axios from 'axios';
+import { connect } from 'react-redux';
 
 class Form2 extends React.Component {
 	constructor(props) {
@@ -15,6 +16,10 @@ class Form2 extends React.Component {
 		this.handleSubmit = this.handleSubmit.bind(this);
 		this.saveData = this.saveData.bind(this);
 	}
+
+	props: {
+    userId: Number
+	};
 
 	handleChange(event) {
     this.setState({
@@ -93,4 +98,8 @@ class Form2 extends React.Component {
 	}
 }
 
-export default Form2;
+const mapStateToProps = (state, ownProps) => {
+	return state.userId;
+};
+
+export default connect(mapStateToProps)(Form2);
